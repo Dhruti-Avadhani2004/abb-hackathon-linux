@@ -1,7 +1,0 @@
-
-/home/kali/workspace/abb-hackathon/copilot-engineering-secure-software-lab-angular/mock-server/server.js
-   59:18  error  'password' is assigned a value but never used  no-unused-vars
-  196:28  error  'next' is defined but never used               no-unused-vars
-
-✖ 2 problems (2 errors, 0 warnings)
-

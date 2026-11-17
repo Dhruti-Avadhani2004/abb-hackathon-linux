@@ -1,7 +1,0 @@
-.NET SDK: 8.0.134
-Target: /home/kali/workspace/abb-hackathon/copilot-engineering-secure-software-lab-angular
-
-Status: NO_APPLICABLE_PROJECTS
-Reason: No .NET project files found.
-Scanner executable verified successfully.
-No dependency vulnerability analysis was performed.

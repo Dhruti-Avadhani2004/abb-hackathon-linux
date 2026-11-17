@@ -1,7 +1,0 @@
-
-===== CycloneDX SBOM =====
-[0000]  WARN no explicit name and version provided for directory source, deriving artifact ID from the given path (which is not ideal)
-
-
-===== SPDX SBOM =====
-[0000]  WARN no explicit name and version provided for directory source, deriving artifact ID from the given path (which is not ideal)

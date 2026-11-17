@@ -37,3 +37,21 @@ secrets.txt
 .vscode/
 .idea/
 .DS_Store
+
+# Generated security assessment reports
+scanner_output/
+security_report/
+
+# Local secrets and credentials
+.env
+.env.*
+!.env.example
+credentials.json
+secrets.txt
+*.pem
+*.key
+
+# Dependencies and caches
+venv/
+.venv/
+node_modules/
