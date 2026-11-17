@@ -1,15 +1,20 @@
-
+import json
 import subprocess
 from pathlib import Path
 from datetime import datetime
-import json
+
+from scan_config import TARGET_DIR, OUTPUT_DIR
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-from scan_config import TARGET_DIR
-OUTPUT_DIR = BASE_DIR / "scanner_output"
+# Reuse the existing offline ESLint installation
+ESLINT_HOME = BASE_DIR / "sgc-gatekeeper-testbed"
 
-ESLINT_CMD = TARGET_DIR / "node_modules" / ".bin" / "eslint.cmd"
+ESLINT_CMD = (
+    ESLINT_HOME / "node_modules" / ".bin" / "eslint"
+)
+
+ESLINT_CONFIG = ESLINT_HOME / "eslint.config.mjs"
 
 JSON_REPORT = OUTPUT_DIR / "eslint_output.json"
 TEXT_REPORT = OUTPUT_DIR / "eslint_output.txt"
@@ -20,94 +25,124 @@ def main():
 
     print("Starting ESLint security scan...")
     print(f"Target: {TARGET_DIR}")
+    print(f"ESLint executable: {ESLINT_CMD}")
+    print(f"ESLint configuration: {ESLINT_CONFIG}")
 
-    if not TARGET_DIR.exists():
-        print("Target directory not found.")
-        return
+    if not TARGET_DIR.is_dir():
+        raise FileNotFoundError(
+            f"Target directory not found: {TARGET_DIR}"
+        )
 
-    if not ESLINT_CMD.exists():
-        print("ESLint executable not found.")
-        print("Install ESLint dependencies inside the target directory.")
-        return
+    if not ESLINT_CMD.is_file():
+        raise FileNotFoundError(
+            f"ESLint executable not found: {ESLINT_CMD}"
+        )
+
+    if not ESLINT_CONFIG.is_file():
+        raise FileNotFoundError(
+            f"ESLint configuration not found: {ESLINT_CONFIG}"
+        )
 
     start_time = datetime.now()
 
-    common_args = [
-        "cmd",
-        "/c",
+    # Remove stale reports before scanning
+    JSON_REPORT.unlink(missing_ok=True)
+    TEXT_REPORT.unlink(missing_ok=True)
+
+    # Run ESLint with the centralized security configuration
+    command = [
         str(ESLINT_CMD),
         ".",
+        "--config",
+        str(ESLINT_CONFIG),
         "--format",
         "json",
         "--output-file",
         str(JSON_REPORT)
     ]
 
-    try:
-        json_result = subprocess.run(
-            common_args,
-            capture_output=True,
-            text=True,
-            encoding="utf-8",
-            errors="replace",
-            cwd=str(TARGET_DIR)
+    result = subprocess.run(
+        command,
+        capture_output=True,
+        text=True,
+        encoding="utf-8",
+        errors="replace",
+        cwd=str(TARGET_DIR),
+        timeout=300
+    )
+
+    # 0 = no lint findings
+    # 1 = lint findings detected
+    # 2 = execution/configuration failure
+    if result.returncode not in (0, 1):
+        raise RuntimeError(
+            "ESLint scan failed:\n"
+            + result.stdout
+            + result.stderr
         )
 
-        if json_result.returncode not in (0, 1):
-            print("ESLint scan failed.")
-            print(json_result.stderr)
-            return
-
-        if not JSON_REPORT.exists():
-            print("ESLint JSON report was not generated.")
-            return
-
-        with open(JSON_REPORT, "r", encoding="utf-8") as report:
-            data = json.load(report)
-
-        total_errors = 0
-        total_warnings = 0
-        total_files = len(data)
-
-        for file_result in data:
-            total_errors += file_result.get("errorCount", 0)
-            total_warnings += file_result.get("warningCount", 0)
-
-        end_time = datetime.now()
-        duration = (end_time - start_time).total_seconds()
-
-        text_command = [
-            "cmd",
-            "/c",
-            str(ESLINT_CMD),
-            "."
-        ]
-
-        text_result = subprocess.run(
-            text_command,
-            capture_output=True,
-            text=True,
-            encoding="utf-8",
-            errors="replace",
-            cwd=str(TARGET_DIR)
+    if not JSON_REPORT.is_file():
+        raise RuntimeError(
+            "ESLint JSON report was not generated."
         )
 
-        with open(TEXT_REPORT, "w", encoding="utf-8") as report:
-            report.write(text_result.stdout)
-            report.write(text_result.stderr)
+    with JSON_REPORT.open("r", encoding="utf-8") as report:
+        data = json.load(report)
 
-        print("\n===== ESLint Scan Summary =====")
-        print("Status: SUCCESS")
-        print(f"Files scanned: {total_files}")
-        print(f"Total errors: {total_errors}")
-        print(f"Total warnings: {total_warnings}")
-        print(f"Duration: {duration:.2f} seconds")
-        print(f"JSON Report: {JSON_REPORT}")
-        print(f"Text Report: {TEXT_REPORT}")
-        print("================================")
+    if not isinstance(data, list):
+        raise RuntimeError("Unexpected ESLint JSON format.")
 
-    except Exception as error:
-        print(f"ESLint execution error: {error}")
+    total_errors = sum(
+        item.get("errorCount", 0) for item in data
+    )
+
+    total_warnings = sum(
+        item.get("warningCount", 0) for item in data
+    )
+
+    # Produce human-readable output from the same configuration
+    text_command = [
+        str(ESLINT_CMD),
+        ".",
+        "--config",
+        str(ESLINT_CONFIG)
+    ]
+
+    text_result = subprocess.run(
+        text_command,
+        capture_output=True,
+        text=True,
+        encoding="utf-8",
+        errors="replace",
+        cwd=str(TARGET_DIR),
+        timeout=300
+    )
+
+    if text_result.returncode not in (0, 1):
+        raise RuntimeError(
+            "ESLint text scan failed:\n"
+            + text_result.stdout
+            + text_result.stderr
+        )
+
+    TEXT_REPORT.write_text(
+        text_result.stdout + text_result.stderr,
+        encoding="utf-8"
+    )
+
+    duration = (
+        datetime.now() - start_time
+    ).total_seconds()
+
+    print("\n===== ESLint Scan Summary =====")
+    print("Status: SUCCESS")
+    print(f"Files scanned: {len(data)}")
+    print(f"Total errors: {total_errors}")
+    print(f"Total warnings: {total_warnings}")
+    print(f"Duration: {duration:.2f} seconds")
+    print(f"JSON Report: {JSON_REPORT}")
+    print(f"Text Report: {TEXT_REPORT}")
+    print("================================")
 
 
 if __name__ == "__main__":

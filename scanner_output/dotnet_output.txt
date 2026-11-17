@@ -1,11 +1,7 @@
+.NET SDK: 8.0.134
+Target: /home/kali/workspace/abb-hackathon/copilot-engineering-secure-software-lab-angular
 
-Project: C:\Users\dhrut\OneDrive\Desktop\abb_hackathon\sgc-gatekeeper-testbed\DotNetVulnerabilityTest.csproj
-
-The following sources were used:
-   https://api.nuget.org/v3/index.json
-
-Project `DotNetVulnerabilityTest` has the following vulnerable packages
-   [net10.0]: 
-   Top-level Package                          Requested   Resolved   Severity   Advisory URL                                     
-   > Microsoft.Extensions.Caching.Memory      6.0.1       6.0.1      High       https://github.com/advisories/GHSA-qj66-m88j-hmgj
-
+Status: NO_APPLICABLE_PROJECTS
+Reason: No .NET project files found.
+Scanner executable verified successfully.
+No dependency vulnerability analysis was performed.

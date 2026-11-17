@@ -1,10 +1,10 @@
-# Appendix C - Final Security Assessment: sgc-gatekeeper-testbed
+# Appendix C - Final Security Assessment: /home/kali/workspace/abb-hackathon/copilot-engineering-secure-software-lab-angular
 
-Generated (UTC): 2026-11-14T17:55:01.416717+00:00
+Generated (UTC): 2026-11-17T17:39:30.909872+00:00
 
 ## 1. Executive summary
 
-Automated analysis produced **116 scanner findings** for **sgc-gatekeeper-testbed**.
+Automated analysis produced **102 scanner findings** for **/home/kali/workspace/abb-hackathon/copilot-engineering-secure-software-lab-angular**.
 
 These are automated detections requiring review, not independently confirmed vulnerabilities.
 
@@ -12,20 +12,20 @@ These are automated detections requiring review, not independently confirmed vul
 
 | Severity | Count |
 | --- | --- |
-| CRITICAL | 8 |
-| HIGH | 43 |
-| MEDIUM | 38 |
-| LOW | 10 |
-| INFO | 7 |
-| UNKNOWN | 10 |
+| CRITICAL | 4 |
+| HIGH | 17 |
+| MEDIUM | 26 |
+| LOW | 0 |
+| INFO | 47 |
+| UNKNOWN | 8 |
 
 ### Top five risks
 
-1. **CRITICAL** - Stripe Secret Key (Trivy, config.py:6)
-2. **CRITICAL** - Google (GCP) Service-account (Trivy, credentials.json:2)
-3. **CRITICAL** - Directory traversal in Django (Trivy, requirements.txt:?)
-4. **CRITICAL** - The (1) django.http.HttpResponseRedirect and (2) django.http.HttpRespo ... (Trivy, requirements.txt:?)
-5. **CRITICAL** - python-django: unexpected code execution using reverse() (Trivy, requirements.txt:?)
+1. **CRITICAL** - Stripe Secret Key (Trivy, src/app/vulnerable/components/data-exposure/data-exposure.component.ts:20)
+2. **CRITICAL** - Stripe Secret Key (Trivy, src/app/vulnerable/components/data-exposure/data-exposure.component.ts:232)
+3. **CRITICAL** - Stripe Secret Key (Trivy, src/app/vulnerable/components/data-exposure/data-exposure.component.ts:254)
+4. **CRITICAL** - Stripe Secret Key (Trivy, src/environments/environment.ts:18)
+5. **HIGH** - User controlled data in methods like 'innerHTML', 'outerHTML' or 'document.write' is an anti-pattern that can lead to XSS vulnerabilities (Semgrep, src/app/secure/components/xss-innerhtml/xss-innerhtml.component.ts:325)
 
 ### Main limitations
 
@@ -35,13 +35,13 @@ Automated findings have not been independently verified. Reachability, runtime e
 
 | Field | Value |
 | --- | --- |
-| Repository | sgc-gatekeeper-testbed |
-| Repository URL | https://github.com/Dhruti-Avadhani2004/sgc-gatekeeper-testbed.git |
-| Commit | 5a1844a031d36d741ef96801f1b913a50f14d1ef |
+| Repository | /home/kali/workspace/abb-hackathon/copilot-engineering-secure-software-lab-angular |
+| Repository URL | https://github.com/ArulaAI/copilot-engineering-secure-software-lab-angular.git |
+| Commit | c6ec732798180a797ee9783cf002aefdfccd5039 |
 | Branch | main |
-| Folders scanned | C:\Users\dhrut\OneDrive\Desktop\abb_hackathon\sgc-gatekeeper-testbed |
+| Folders scanned | /home/kali/workspace/abb-hackathon/copilot-engineering-secure-software-lab-angular |
 | Known exclusions | node_modules |
-| Scanner output directory | C:\Users\dhrut\OneDrive\Desktop\abb_hackathon\scanner_output |
+| Scanner output directory | /home/kali/workspace/abb-hackathon/scanner_output |
 
 Exclusions listed here are only those recorded in the available reports or metadata. Different scanners may have different exclusions.
 
@@ -49,13 +49,13 @@ Exclusions listed here are only those recorded in the available reports or metad
 
 | Field | Recorded value |
 | --- | --- |
-| OS / VM | Windows-11-10.0.26200-SP0 |
+| OS / VM | Linux-5.15.0-203-generic-x86_64-with-glibc2.35 |
 | CPU architecture | 64 |
-| Python version | 3.12.0 (tags/v3.12.0:0fb18b0, Oct  2 2023, 13:03:39) [MSC v.1935 64 bit (AMD64)] |
+| Python version | 3.12.16 (main, Oct 26 2026, 15:28:01) [GCC 11.4.0] |
 | Rule-set hashes | Not supplied |
 | Vulnerability database timestamps | Not supplied |
-| Trivy report timestamp | 2026-11-14T22:17:30.7239761+05:30 |
-| ScanCode scan start | 2026-11-14T164800.884770 |
+| Trivy report timestamp | 2026-11-17T17:28:14.435744214Z |
+| ScanCode scan start | 2026-11-17T172827.762977 |
 
 ### Scanner versions
 
@@ -64,7 +64,7 @@ Exclusions listed here are only those recorded in the available reports or metad
 | Semgrep | 1.185.0 |
 | Trivy | 0.76.2 |
 | ScanCode | 32.5.0 |
-| Syft | 1.55.0 |
+| Syft | 1.57.1 |
 
 ### Scanner input status
 
@@ -100,7 +100,7 @@ Exact execution commands, scan options, offline cache configuration and rule pro
 
 | Repository | Critical | High | Medium | Low | Info | Unknown | Confirmed | Unverified |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| sgc-gatekeeper-testbed | 8 | 43 | 38 | 10 | 7 | 10 | 0 | 116 |
+| /home/kali/workspace/abb-hackathon/copilot-engineering-secure-software-lab-angular | 4 | 17 | 26 | 0 | 47 | 8 | 0 | 102 |
 
 All findings are classified as **unverified** until a human reviewer confirms their disposition. Scanner confidence does not establish exploitability.
 
@@ -108,23 +108,21 @@ All findings are classified as **unverified** until a human reviewer confirms th
 
 | Category | Count |
 | --- | --- |
-| Dependency vulnerability | 59 |
-| security | 34 |
-| Potential secret | 9 |
-| SAST | 9 |
-| Code quality | 3 |
-| Security lint rule | 2 |
+| correctness | 46 |
+| Dependency vulnerability | 21 |
+| security | 14 |
+| Potential secret | 10 |
+| best-practice | 9 |
+| Code quality | 2 |
 
 ### Findings by scanner
 
 | Scanner | Count |
 | --- | --- |
-| .NET | 1 |
-| Bandit | 9 |
-| ESLint | 5 |
-| Gitleaks | 5 |
-| Semgrep | 34 |
-| Trivy | 62 |
+| ESLint | 2 |
+| Gitleaks | 6 |
+| Semgrep | 69 |
+| Trivy | 25 |
 
 ## 6. Top findings
 
@@ -132,10 +130,10 @@ All findings are classified as **unverified** until a human reviewer confirms th
 
 | Field | Value |
 | --- | --- |
-| Finding ID | 0cc082048c4a5f5c |
+| Finding ID | 28c6d83e1fda21ca |
 | Scanner | Trivy |
 | Severity | CRITICAL |
-| Evidence location | config.py:6 |
+| Evidence location | src/app/vulnerable/components/data-exposure/data-exposure.component.ts:20 |
 | Rule | stripe-secret-token |
 | CWE | Not supplied |
 | CVE / advisory | Not supplied |
@@ -148,15 +146,15 @@ All findings are classified as **unverified** until a human reviewer confirms th
 
 Evidence summary: Potential secret detected; value withheld.
 
-### 2. Google (GCP) Service-account
+### 2. Stripe Secret Key
 
 | Field | Value |
 | --- | --- |
-| Finding ID | 6d99db479565218f |
+| Finding ID | 9d4db1749eab1f3a |
 | Scanner | Trivy |
 | Severity | CRITICAL |
-| Evidence location | credentials.json:2 |
-| Rule | gcp-service-account |
+| Evidence location | src/app/vulnerable/components/data-exposure/data-exposure.component.ts:232 |
+| Rule | stripe-secret-token |
 | CWE | Not supplied |
 | CVE / advisory | Not supplied |
 | Reachability | Not assessed |
@@ -168,371 +166,371 @@ Evidence summary: Potential secret detected; value withheld.
 
 Evidence summary: Potential secret detected; value withheld.
 
-### 3. Directory traversal in Django
+### 3. Stripe Secret Key
 
 | Field | Value |
 | --- | --- |
-| Finding ID | 2a12737ecdff29df |
+| Finding ID | 8e6c590f09b2c2fc |
 | Scanner | Trivy |
 | Severity | CRITICAL |
-| Evidence location | requirements.txt |
-| Rule | CVE-2011-0698 |
-| CWE | CWE-22 |
-| CVE / advisory | CVE-2011-0698 |
-| Reachability | Not assessed |
-| Impact | Requires review |
-| Disposition | Unverified |
-| Suggested fix | Review affected package and update to a compatible fixed version: 1.1.4, 1.2.5 |
-| Source | trivy_output_offline.json |
-| Reference | https://avd.aquasec.com/nvd/cve-2011-0698 |
-
-Evidence summary: Directory traversal vulnerability in Django 1.1.x before 1.1.4 and 1.2.x before 1.2.5 on Windows might allow remote attackers to read or execute files via a / (slash) character in a key in a session cookie, related to session replays.
-
-### 4. The (1) django.http.HttpResponseRedirect and (2) django.http.HttpRespo ...
-
-| Field | Value |
-| --- | --- |
-| Finding ID | 0a7904e03992c381 |
-| Scanner | Trivy |
-| Severity | CRITICAL |
-| Evidence location | requirements.txt |
-| Rule | CVE-2012-3442 |
-| CWE | CWE-79 |
-| CVE / advisory | CVE-2012-3442 |
-| Reachability | Not assessed |
-| Impact | Requires review |
-| Disposition | Unverified |
-| Suggested fix | Review affected package and update to a compatible fixed version: 1.3.2, 1.4.1 |
-| Source | trivy_output_offline.json |
-| Reference | https://avd.aquasec.com/nvd/cve-2012-3442 |
-
-Evidence summary: The (1) django.http.HttpResponseRedirect and (2) django.http.HttpResponsePermanentRedirect classes in Django before 1.3.2 and 1.4.x before 1.4.1 do not validate the scheme of a redirect target, which might allow remote attackers to conduct cross-site scripting (XSS) attacks via a data: URL.
-
-### 5. python-django: unexpected code execution using reverse()
-
-| Field | Value |
-| --- | --- |
-| Finding ID | 8cae1978e171c3c8 |
-| Scanner | Trivy |
-| Severity | CRITICAL |
-| Evidence location | requirements.txt |
-| Rule | CVE-2014-0472 |
-| CWE | CWE-94 |
-| CVE / advisory | CVE-2014-0472 |
-| Reachability | Not assessed |
-| Impact | Requires review |
-| Disposition | Unverified |
-| Suggested fix | Review affected package and update to a compatible fixed version: 1.4.11, 1.5.6, 1.6.3 |
-| Source | trivy_output_offline.json |
-| Reference | https://avd.aquasec.com/nvd/cve-2014-0472 |
-
-Evidence summary: The django.core.urlresolvers.reverse function in Django before 1.4.11, 1.5.x before 1.5.6, 1.6.x before 1.6.3, and 1.7.x before 1.7 beta 2 allows remote attackers to import and execute arbitrary Python modules by leveraging a view that constructs URLs using user input and a "dotted Python path."
-
-### 6. Django: crafted email address allows account takeover
-
-| Field | Value |
-| --- | --- |
-| Finding ID | 3fe4111f140e13aa |
-| Scanner | Trivy |
-| Severity | CRITICAL |
-| Evidence location | requirements.txt |
-| Rule | CVE-2019-19844 |
-| CWE | CWE-640 |
-| CVE / advisory | CVE-2019-19844 |
-| Reachability | Not assessed |
-| Impact | Requires review |
-| Disposition | Unverified |
-| Suggested fix | Review affected package and update to a compatible fixed version: 1.11.27, 2.2.9, 3.0.1 |
-| Source | trivy_output_offline.json |
-| Reference | https://avd.aquasec.com/nvd/cve-2019-19844 |
-
-Evidence summary: Django before 1.11.27, 2.x before 2.2.9, and 3.x before 3.0.1 allows account takeover. A suitably crafted email address (that is equal to an existing user's email address after case transformation of Unicode characters) would allow an attacker to be sent a password reset token for the matched user account. (One mitigation in the new releases is to send password reset tokens only to the registered user email address.)
-
-### 7. django: potential SQL injection via StringAgg(delimiter)
-
-| Field | Value |
-| --- | --- |
-| Finding ID | ce738bb908addcc1 |
-| Scanner | Trivy |
-| Severity | CRITICAL |
-| Evidence location | requirements.txt |
-| Rule | CVE-2020-7471 |
-| CWE | CWE-89 |
-| CVE / advisory | CVE-2020-7471 |
-| Reachability | Not assessed |
-| Impact | Requires review |
-| Disposition | Unverified |
-| Suggested fix | Review affected package and update to a compatible fixed version: 1.11.28, 2.2.10, 3.0.3 |
-| Source | trivy_output_offline.json |
-| Reference | https://avd.aquasec.com/nvd/cve-2020-7471 |
-
-Evidence summary: Django 1.11 before 1.11.28, 2.2 before 2.2.10, and 3.0 before 3.0.3 allows SQL Injection if untrusted data is used as a StringAgg delimiter (e.g., in Django applications that offer downloads of data as a series of rows with a user-specified column delimiter). By passing a suitably crafted delimiter to a contrib.postgres.aggregates.StringAgg instance, it was possible to break escaping and inject malicious SQL.
-
-### 8. django: Django SQL injection
-
-| Field | Value |
-| --- | --- |
-| Finding ID | 3419da0467e6d239 |
-| Scanner | Trivy |
-| Severity | CRITICAL |
-| Evidence location | requirements.txt |
-| Rule | CVE-2025-64459 |
-| CWE | CWE-89 |
-| CVE / advisory | CVE-2025-64459 |
-| Reachability | Not assessed |
-| Impact | Requires review |
-| Disposition | Unverified |
-| Suggested fix | Review affected package and update to a compatible fixed version: 5.2.8, 5.1.14, 4.2.26 |
-| Source | trivy_output_offline.json |
-| Reference | https://avd.aquasec.com/nvd/cve-2025-64459 |
-
-Evidence summary: An issue was discovered in 5.1 before 5.1.14, 4.2 before 4.2.26, and 5.2 before 5.2.8. The methods 'QuerySet.filter()', 'QuerySet.exclude()', and 'QuerySet.get()', and the class 'Q()', are subject to SQL injection when using a suitably crafted dictionary, with dictionary expansion, as the '_connector' argument. Earlier, unsupported Django series (such as 5.0.x, 4.1.x, and 3.2.x) were not evaluated and may also be affected. Django would like to thank cyberstan for reporting this issue.
-
-### 9. Vulnerable NuGet package: Microsoft.Extensions.Caching.Memory
-
-| Field | Value |
-| --- | --- |
-| Finding ID | 91a1e40cc125cd64 |
-| Scanner | .NET |
-| Severity | HIGH |
-| Evidence location | DotNetVulnerabilityTest.csproj |
-| Rule | GHSA-qj66-m88j-hmgj |
+| Evidence location | src/app/vulnerable/components/data-exposure/data-exposure.component.ts:254 |
+| Rule | stripe-secret-token |
 | CWE | Not supplied |
-| CVE / advisory | GHSA-qj66-m88j-hmgj |
-| Reachability | Not assessed |
-| Impact | Requires review |
-| Disposition | Unverified |
-| Suggested fix | Manual remediation decision required |
-| Source | dotnet_output.txt |
-| Reference | https://github.com/advisories/GHSA-qj66-m88j-hmgj |
-
-Evidence summary: NuGet vulnerability advisory reported by dotnet.
-
-### 10. start_process_with_a_shell
-
-| Field | Value |
-| --- | --- |
-| Finding ID | 3fd1d40d84b03c52 |
-| Scanner | Bandit |
-| Severity | HIGH |
-| Evidence location | kitchen_sink.py:22 |
-| Rule | B605 |
-| CWE | CWE-78 |
 | CVE / advisory | Not supplied |
 | Reachability | Not assessed |
 | Impact | Requires review |
 | Disposition | Unverified |
 | Suggested fix | Manual remediation decision required |
-| Source | bandit_output.json |
-| Reference | https://bandit.readthedocs.io/en/1.9.4/plugins/b605_start_process_with_a_shell.html |
+| Source | trivy_output_offline.json |
+| Reference | Not supplied |
 
-Evidence summary: Starting a process with a shell, possible injection detected, security issue.
+Evidence summary: Potential secret detected; value withheld.
 
-### 11. flask_debug_true
+### 4. Stripe Secret Key
 
 | Field | Value |
 | --- | --- |
-| Finding ID | adfefd3f3a78014c |
-| Scanner | Bandit |
-| Severity | HIGH |
-| Evidence location | kitchen_sink.py:39 |
-| Rule | B201 |
-| CWE | CWE-94 |
+| Finding ID | ef9afcf895b6b311 |
+| Scanner | Trivy |
+| Severity | CRITICAL |
+| Evidence location | src/environments/environment.ts:18 |
+| Rule | stripe-secret-token |
+| CWE | Not supplied |
 | CVE / advisory | Not supplied |
 | Reachability | Not assessed |
 | Impact | Requires review |
 | Disposition | Unverified |
 | Suggested fix | Manual remediation decision required |
-| Source | bandit_output.json |
-| Reference | https://bandit.readthedocs.io/en/1.9.4/plugins/b201_flask_debug_true.html |
+| Source | trivy_output_offline.json |
+| Reference | Not supplied |
 
-Evidence summary: A Flask app appears to be run with debug=True, which exposes the Werkzeug debugger and allows the execution of arbitrary code.
+Evidence summary: Potential secret detected; value withheld.
 
-### 12. hashlib
-
-| Field | Value |
-| --- | --- |
-| Finding ID | 8a9e124cd8f404fc |
-| Scanner | Bandit |
-| Severity | HIGH |
-| Evidence location | legacy_code.py:4 |
-| Rule | B324 |
-| CWE | CWE-327 |
-| CVE / advisory | Not supplied |
-| Reachability | Not assessed |
-| Impact | Requires review |
-| Disposition | Unverified |
-| Suggested fix | Manual remediation decision required |
-| Source | bandit_output.json |
-| Reference | https://bandit.readthedocs.io/en/1.9.4/plugins/b324_hashlib.html |
-
-Evidence summary: Use of weak MD5 hash for security. Consider usedforsecurity=False
-
-### 13. Detected calls to child_process from a function argument 'req'. This could lead to a command injection if the input is user controllable. Try to avoid calls to child_process, and if it is needed ensure user input is corr
+### 5. User controlled data in methods like 'innerHTML', 'outerHTML' or 'document.write' is an anti-pattern that can lead to XSS vulnerabilities
 
 | Field | Value |
 | --- | --- |
-| Finding ID | bf377183ebe0fc81 |
+| Finding ID | 76659cf9d9010277 |
 | Scanner | Semgrep |
 | Severity | HIGH |
-| Evidence location | broken_gate.js:10 |
-| Rule | scanner_output.semgrep-configs.javascript.lang.security.detect-child-process |
-| CWE | CWE-78 |
+| Evidence location | src/app/secure/components/xss-innerhtml/xss-innerhtml.component.ts:325 |
+| Rule | scanner_output.semgrep-configs.javascript.browser.security.insecure-document-method |
+| CWE | CWE-79 |
 | CVE / advisory | Not supplied |
 | Reachability | Not assessed |
 | Impact | Requires review |
 | Disposition | Unverified |
 | Suggested fix | Manual remediation decision required |
 | Source | semgrep_output.json |
-| Reference | https://cheatsheetseries.owasp.org/cheatsheets/Nodejs_Security_Cheat_Sheet.html#do-not-use-dangerous-functions |
+| Reference | https://owasp.org/Top10/A03_2021-Injection |
 
-Evidence summary: Detected calls to child_process from a function argument 'req'. This could lead to a command injection if the input is user controllable. Try to avoid calls to child_process, and if it is needed ensure user input is correctly sanitized or sandboxed. 
+Evidence summary: User controlled data in methods like 'innerHTML', 'outerHTML' or 'document.write' is an anti-pattern that can lead to XSS vulnerabilities
 
-### 14. Found data from an Express or Next web request flowing to 'eval'. If this data is user-controllable this can lead to execution of arbitrary system commands in the context of your application process. Avoid 'eval' wheneve
+### 6. User controlled data in a 'textarea.innerHTML' is an anti-pattern that can lead to XSS vulnerabilities
 
 | Field | Value |
 | --- | --- |
-| Finding ID | eb61cb176566abda |
+| Finding ID | 81d7485718cbbfd8 |
 | Scanner | Semgrep |
 | Severity | HIGH |
-| Evidence location | broken_gate.js:20 |
-| Rule | scanner_output.semgrep-configs.javascript.lang.security.audit.code-string-concat |
-| CWE | CWE-95 |
+| Evidence location | src/app/secure/components/xss-innerhtml/xss-innerhtml.component.ts:325 |
+| Rule | scanner_output.semgrep-configs.javascript.browser.security.insecure-innerhtml |
+| CWE | CWE-79 |
 | CVE / advisory | Not supplied |
 | Reachability | Not assessed |
 | Impact | Requires review |
 | Disposition | Unverified |
 | Suggested fix | Manual remediation decision required |
 | Source | semgrep_output.json |
-| Reference | https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/eval |
+| Reference | https://owasp.org/Top10/A03_2021-Injection |
 
-Evidence summary: Found data from an Express or Next web request flowing to 'eval'. If this data is user-controllable this can lead to execution of arbitrary system commands in the context of your application process. Avoid 'eval' whenever possible.
+Evidence summary: User controlled data in a 'textarea.innerHTML' is an anti-pattern that can lead to XSS vulnerabilities
 
-### 15. Private Key detected. This is a sensitive credential and should not be hardcoded here. Instead, store this in a separate, private file.
+### 7. User controlled data in methods like 'innerHTML', 'outerHTML' or 'document.write' is an anti-pattern that can lead to XSS vulnerabilities
 
 | Field | Value |
 | --- | --- |
-| Finding ID | d298d18ff9d8029d |
+| Finding ID | 44d37fa70817f75a |
 | Scanner | Semgrep |
 | Severity | HIGH |
-| Evidence location | config.py:8 |
-| Rule | scanner_output.semgrep-configs.generic.secrets.security.detected-private-key |
-| CWE | CWE-798 |
+| Evidence location | src/app/vulnerable/components/xss-interpolation/xss-interpolation.component.ts:241 |
+| Rule | scanner_output.semgrep-configs.javascript.browser.security.insecure-document-method |
+| CWE | CWE-79 |
 | CVE / advisory | Not supplied |
 | Reachability | Not assessed |
 | Impact | Requires review |
 | Disposition | Unverified |
 | Suggested fix | Manual remediation decision required |
 | Source | semgrep_output.json |
-| Reference | https://owasp.org/Top10/A07_2021-Identification_and_Authentication_Failures |
+| Reference | https://owasp.org/Top10/A03_2021-Injection |
 
-Evidence summary: Private Key detected. This is a sensitive credential and should not be hardcoded here. Instead, store this in a separate, private file.
+Evidence summary: User controlled data in methods like 'innerHTML', 'outerHTML' or 'document.write' is an anti-pattern that can lead to XSS vulnerabilities
 
-### 16. Google (GCM) Service account detected
+### 8. User controlled data in a 'this.welcomeContainer.nativeElement.innerHTML' is an anti-pattern that can lead to XSS vulnerabilities
 
 | Field | Value |
 | --- | --- |
-| Finding ID | dcae19129c41bb28 |
+| Finding ID | 1caaed45f152cd82 |
 | Scanner | Semgrep |
 | Severity | HIGH |
-| Evidence location | credentials.json:2 |
-| Rule | scanner_output.semgrep-configs.generic.secrets.security.detected-google-gcm-service-account |
-| CWE | CWE-798 |
+| Evidence location | src/app/vulnerable/components/xss-interpolation/xss-interpolation.component.ts:241 |
+| Rule | scanner_output.semgrep-configs.javascript.browser.security.insecure-innerhtml |
+| CWE | CWE-79 |
 | CVE / advisory | Not supplied |
 | Reachability | Not assessed |
 | Impact | Requires review |
 | Disposition | Unverified |
 | Suggested fix | Manual remediation decision required |
 | Source | semgrep_output.json |
-| Reference | https://owasp.org/Top10/A07_2021-Identification_and_Authentication_Failures |
+| Reference | https://owasp.org/Top10/A03_2021-Injection |
 
-Evidence summary: Google (GCM) Service account detected
+Evidence summary: User controlled data in a 'this.welcomeContainer.nativeElement.innerHTML' is an anti-pattern that can lead to XSS vulnerabilities
 
-### 17. Request data detected in os.system. This could be vulnerable to a command injection and should be avoided. If this must be done, use the 'subprocess' module instead and pass the arguments as a list. See https://owasp.org
-
-| Field | Value |
-| --- | --- |
-| Finding ID | 1360e2722cd599dd |
-| Scanner | Semgrep |
-| Severity | HIGH |
-| Evidence location | kitchen_sink.py:12 |
-| Rule | scanner_output.semgrep-configs.python.django.security.injection.command.command-injection-os-system |
-| CWE | CWE-78 |
-| CVE / advisory | Not supplied |
-| Reachability | Not assessed |
-| Impact | Requires review |
-| Disposition | Unverified |
-| Suggested fix | Manual remediation decision required |
-| Source | semgrep_output.json |
-| Reference | https://owasp.org/www-community/attacks/Command_Injection |
-
-Evidence summary: Request data detected in os.system. This could be vulnerable to a command injection and should be avoided. If this must be done, use the 'subprocess' module instead and pass the arguments as a list. See https://owasp.org/www-community/attacks/Command_Injection for more information.
-
-### 18. Avoiding SQL string concatenation: untrusted input concatenated with raw SQL query can result in SQL Injection. In order to execute raw query safely, prepared statement should be used. SQLAlchemy provides TextualSQL to e
+### 9. @angular/common: Information Leak via Default Caching of Credentialed Requests in HttpTransferCache
 
 | Field | Value |
 | --- | --- |
-| Finding ID | c90111fc4af8d251 |
-| Scanner | Semgrep |
+| Finding ID | e0dc901000368b1b |
+| Scanner | Trivy |
 | Severity | HIGH |
-| Evidence location | kitchen_sink.py:18 |
-| Rule | scanner_output.semgrep-configs.python.sqlalchemy.security.sqlalchemy-execute-raw-query |
-| CWE | CWE-89 |
-| CVE / advisory | Not supplied |
+| Evidence location | package-lock.json |
+| Rule | CVE-2026-50170 |
+| CWE | CWE-524 |
+| CVE / advisory | CVE-2026-50170 |
 | Reachability | Not assessed |
 | Impact | Requires review |
 | Disposition | Unverified |
-| Suggested fix | Manual remediation decision required |
-| Source | semgrep_output.json |
-| Reference | https://docs.sqlalchemy.org/en/14/core/tutorial.html#using-textual-sql |
+| Suggested fix | Review affected package and update to a compatible fixed version: 22.0.0-rc.2, 20.3.22, 19.2.23, 21.2.15 |
+| Source | trivy_output_offline.json |
+| Reference | https://avd.aquasec.com/nvd/cve-2026-50170 |
 
-Evidence summary: Avoiding SQL string concatenation: untrusted input concatenated with raw SQL query can result in SQL Injection. In order to execute raw query safely, prepared statement should be used. SQLAlchemy provides TextualSQL to easily used prepared statement with named parameters. For complex SQL composition, use SQL Expression Language or Schema Definition Language. In most cases, SQLAlchemy ORM will be a better option.
+Evidence summary: Angular is a development platform for building mobile and desktop web applications using TypeScript/JavaScript and other languages. Prior to 22.0.0-rc.2, 21.2.15, 20.3.22, and 19.2.23, a vulnerability was discovered in @angular/common when Server-Side Rendering (SSR) and hydration are enabled. The HttpTransferCache utility optimizes hydration by caching outgoing HTTP requests performed during SSR and transferring the cached state to the client-side application via TransferState. However, the cac
 
-### 19. Detected user input used to manually construct a SQL string. This is usually bad practice because manual construction could accidentally result in a SQL injection. An attacker could use a SQL injection to steal or modify
+### 10. @angular/common: Angular @angular/common: Denial of Service via malformed digitsInfo parameter
 
 | Field | Value |
 | --- | --- |
-| Finding ID | d215c1aa9319ba78 |
-| Scanner | Semgrep |
+| Finding ID | b9b3d9075f6afd4e |
+| Scanner | Trivy |
 | Severity | HIGH |
-| Evidence location | kitchen_sink.py:18 |
-| Rule | scanner_output.semgrep-configs.python.django.security.injection.tainted-sql-string |
-| CWE | CWE-915 |
-| CVE / advisory | Not supplied |
+| Evidence location | package-lock.json |
+| Rule | CVE-2026-50171 |
+| CWE | CWE-400, CWE-834 |
+| CVE / advisory | CVE-2026-50171 |
 | Reachability | Not assessed |
 | Impact | Requires review |
 | Disposition | Unverified |
-| Suggested fix | Manual remediation decision required |
-| Source | semgrep_output.json |
-| Reference | https://docs.djangoproject.com/en/3.0/topics/security/#sql-injection-protection |
+| Suggested fix | Review affected package and update to a compatible fixed version: 22.0.0-rc.2, 20.3.22, 19.2.23, 21.2.15 |
+| Source | trivy_output_offline.json |
+| Reference | https://avd.aquasec.com/nvd/cve-2026-50171 |
 
-Evidence summary: Detected user input used to manually construct a SQL string. This is usually bad practice because manual construction could accidentally result in a SQL injection. An attacker could use a SQL injection to steal or modify contents of the database. Instead, use a parameterized query which is available by default in most database engines. Alternatively, consider using the Django object-relational mappers (ORM) instead of raw SQL queries.
+Evidence summary: Angular is a development platform for building mobile and desktop web applications using TypeScript/JavaScript and other languages. Prior to 22.0.0-rc.2, 21.2.15, 20.3.22, and 19.2.23, a Denial of Service (DoS) vulnerability exists in the @angular/common package of Angular. The formatNumber function, which is also utilized by DecimalPipe, PercentPipe, and CurrencyPipe, does not properly validate the upper bounds of the digitsInfo parameter. Specifically, the minimum and maximum fraction digits p
 
-### 20. Detected user input used to manually construct a SQL string. This is usually bad practice because manual construction could accidentally result in a SQL injection. An attacker could use a SQL injection to steal or modify
+### 11. @angular/common: Weak 32-Bit Cache Key Hashing in 'HttpTransferCache' Leading to Cross-Request Data Leakage and State Poisoning
 
 | Field | Value |
 | --- | --- |
-| Finding ID | ad17013d0b9011f1 |
-| Scanner | Semgrep |
+| Finding ID | 278c20169a385e20 |
+| Scanner | Trivy |
 | Severity | HIGH |
-| Evidence location | kitchen_sink.py:18 |
-| Rule | scanner_output.semgrep-configs.python.flask.security.injection.tainted-sql-string |
-| CWE | CWE-704 |
-| CVE / advisory | Not supplied |
+| Evidence location | package-lock.json |
+| Rule | CVE-2026-54266 |
+| CWE | CWE-328, CWE-345 |
+| CVE / advisory | CVE-2026-54266 |
 | Reachability | Not assessed |
 | Impact | Requires review |
 | Disposition | Unverified |
-| Suggested fix | Manual remediation decision required |
-| Source | semgrep_output.json |
-| Reference | https://docs.sqlalchemy.org/en/14/core/tutorial.html#using-textual-sql |
+| Suggested fix | Review affected package and update to a compatible fixed version: 22.0.1, 21.2.17, 20.3.25 |
+| Source | trivy_output_offline.json |
+| Reference | https://avd.aquasec.com/nvd/cve-2026-54266 |
 
-Evidence summary: Detected user input used to manually construct a SQL string. This is usually bad practice because manual construction could accidentally result in a SQL injection. An attacker could use a SQL injection to steal or modify contents of the database. Instead, use a parameterized query which is available by default in most database engines. Alternatively, consider using an object-relational mapper (ORM) such as SQLAlchemy which will protect your queries.
+Evidence summary: Angular is a development platform for building mobile and desktop web applications using TypeScript/JavaScript and other languages. Prior to 22.0.1, 21.2.17, and 20.3.25, Angular's HttpTransferCache caches HTTP requests made during Server-Side Rendering (SSR) so that they can be reused during client-side hydration. This avoids repeating the same HTTP requests on the client. The cached responses are stored in TransferState using a cache key generated by hashing request properties (method, respons
 
-Only the first 20 of 116 findings are expanded here. Complete records are available in consolidated_findings.json.
+### 12. @angular/common: Angular @angular/common: Denial of Service via crafted date format string
+
+| Field | Value |
+| --- | --- |
+| Finding ID | be4529adfb88c83c |
+| Scanner | Trivy |
+| Severity | HIGH |
+| Evidence location | package-lock.json |
+| Rule | CVE-2026-54268 |
+| CWE | CWE-1333, CWE-400 |
+| CVE / advisory | CVE-2026-54268 |
+| Reachability | Not assessed |
+| Impact | Requires review |
+| Disposition | Unverified |
+| Suggested fix | Review affected package and update to a compatible fixed version: 22.0.1, 21.2.17, 20.3.25 |
+| Source | trivy_output_offline.json |
+| Reference | https://avd.aquasec.com/nvd/cve-2026-54268 |
+
+Evidence summary: Angular is a development platform for building mobile and desktop web applications using TypeScript/JavaScript and other languages. Prior to 22.0.1, 21.2.17, and 20.3.25, a Denial of Service (DoS) vulnerability exists in the @angular/common package of the Angular framework. The formatDate function, which is also utilized by the standard Angular DatePipe, does not properly limit or validate the length of the format parameter. When parsing a maliciously crafted, excessively long date format string
+
+### 13. @angular/common: Angular: Cross-Request Response Reuse and State Poisoning in HttpTransferCache
+
+| Field | Value |
+| --- | --- |
+| Finding ID | 4d903fc835774f42 |
+| Scanner | Trivy |
+| Severity | HIGH |
+| Evidence location | package-lock.json |
+| Rule | CVE-2026-68945 |
+| CWE | CWE-345 |
+| CVE / advisory | CVE-2026-68945 |
+| Reachability | Not assessed |
+| Impact | Requires review |
+| Disposition | Unverified |
+| Suggested fix | Review affected package and update to a compatible fixed version: 22.0.2, 21.2.19, 20.3.27 |
+| Source | trivy_output_offline.json |
+| Reference | https://avd.aquasec.com/nvd/cve-2026-68945 |
+
+Evidence summary: Angular is a development platform for building mobile and desktop web applications using TypeScript/JavaScript and other languages. Prior to 20.3.27, 21.2.19, and 22.0.2, HttpTransferCache comma-joins repeated request parameters, allowing semantically distinct HttpClient requests to use the same transfer-cache key and reuse a wrong backend response. This issue is fixed in versions 20.3.27, 21.2.19, and 22.0.2.
+
+### 14. @angular/core: @angular/compiler: Angular has XSS in i18n attribute bindings
+
+| Field | Value |
+| --- | --- |
+| Finding ID | 071077b76b821a39 |
+| Scanner | Trivy |
+| Severity | HIGH |
+| Evidence location | package-lock.json |
+| Rule | CVE-2026-32635 |
+| CWE | CWE-79 |
+| CVE / advisory | CVE-2026-32635 |
+| Reachability | Not assessed |
+| Impact | Requires review |
+| Disposition | Unverified |
+| Suggested fix | Review affected package and update to a compatible fixed version: 22.0.0-next.3, 21.2.4, 20.3.18, 19.2.20 |
+| Source | trivy_output_offline.json |
+| Reference | https://avd.aquasec.com/nvd/cve-2026-32635 |
+
+Evidence summary: Angular is a development platform for building mobile and desktop web applications using TypeScript/JavaScript and other languages. Prior to 22.0.0-next.3, 21.2.4, 20.3.18, and 19.2.20, a Cross-Site Scripting (XSS) vulnerability has been identified in the Angular runtime and compiler. It occurs when the application uses a security-sensitive attribute (for example href on an anchor tag) together with Angular's ability to internationalize attributes. Enabling internationalization for the sensitive
+
+### 15. @angular/compiler: @angular/core: Angular: Cross-Site Scripting via internationalization event handlers
+
+| Field | Value |
+| --- | --- |
+| Finding ID | f2f9f713fad65c5a |
+| Scanner | Trivy |
+| Severity | HIGH |
+| Evidence location | package-lock.json |
+| Rule | CVE-2026-69151 |
+| CWE | CWE-79 |
+| CVE / advisory | CVE-2026-69151 |
+| Reachability | Not assessed |
+| Impact | Requires review |
+| Disposition | Unverified |
+| Suggested fix | Review affected package and update to a compatible fixed version: 22.0.1, 21.2.19, 20.3.27 |
+| Source | trivy_output_offline.json |
+| Reference | https://avd.aquasec.com/nvd/cve-2026-69151 |
+
+Evidence summary: Angular is a development platform for building mobile and desktop web applications using TypeScript/JavaScript and other languages. Prior to 20.3.27, 21.2.19, and 22.0.1, the Angular compiler i18n pipeline permits i18n-onerror and other i18n-on event-handler attributes, allowing a lower-trust translation file to replace a static handler with executable JavaScript. This issue is fixed in versions 20.3.27, 21.2.19, and 22.0.1.
+
+### 16. @angular/core: Angular: Cross-site scripting via compromised translation files
+
+| Field | Value |
+| --- | --- |
+| Finding ID | ec5eacb0d04ee952 |
+| Scanner | Trivy |
+| Severity | HIGH |
+| Evidence location | package-lock.json |
+| Rule | CVE-2026-27970 |
+| CWE | CWE-79 |
+| CVE / advisory | CVE-2026-27970 |
+| Reachability | Not assessed |
+| Impact | Requires review |
+| Disposition | Unverified |
+| Suggested fix | Review affected package and update to a compatible fixed version: 21.2.0, 21.1.6, 20.3.17, 19.2.19 |
+| Source | trivy_output_offline.json |
+| Reference | https://avd.aquasec.com/nvd/cve-2026-27970 |
+
+Evidence summary: Angular is a development platform for building mobile and desktop web applications using TypeScript/JavaScript and other languages. Versions prior to 21.2.0, 21.1.16, 20.3.17, and 19.2.19 have a cross-Site scripting vulnerability in the Angular internationalization (i18n) pipeline. In ICU messages (International Components for Unicode), HTML from translated content was not properly sanitized and could execute arbitrary JavaScript. Angular i18n typically involves three steps, extracting all messa
+
+### 17. @angular/core: @angular/compiler: Angular has XSS in i18n attribute bindings
+
+| Field | Value |
+| --- | --- |
+| Finding ID | e029533f9df878f3 |
+| Scanner | Trivy |
+| Severity | HIGH |
+| Evidence location | package-lock.json |
+| Rule | CVE-2026-32635 |
+| CWE | CWE-79 |
+| CVE / advisory | CVE-2026-32635 |
+| Reachability | Not assessed |
+| Impact | Requires review |
+| Disposition | Unverified |
+| Suggested fix | Review affected package and update to a compatible fixed version: 22.0.0-next.3, 21.2.4, 20.3.18, 19.2.20 |
+| Source | trivy_output_offline.json |
+| Reference | https://avd.aquasec.com/nvd/cve-2026-32635 |
+
+Evidence summary: Angular is a development platform for building mobile and desktop web applications using TypeScript/JavaScript and other languages. Prior to 22.0.0-next.3, 21.2.4, 20.3.18, and 19.2.20, a Cross-Site Scripting (XSS) vulnerability has been identified in the Angular runtime and compiler. It occurs when the application uses a security-sensitive attribute (for example href on an anchor tag) together with Angular's ability to internationalize attributes. Enabling internationalization for the sensitive
+
+### 18. @angular/core: Angular Client Hydration DOM Clobbering & Response-Cache Poisoning
+
+| Field | Value |
+| --- | --- |
+| Finding ID | dcfd8bef007f8614 |
+| Scanner | Trivy |
+| Severity | HIGH |
+| Evidence location | package-lock.json |
+| Rule | CVE-2026-54267 |
+| CWE | CWE-471, CWE-79 |
+| CVE / advisory | CVE-2026-54267 |
+| Reachability | Not assessed |
+| Impact | Requires review |
+| Disposition | Unverified |
+| Suggested fix | Review affected package and update to a compatible fixed version: 22.0.1, 21.2.17, 20.3.25 |
+| Source | trivy_output_offline.json |
+| Reference | https://avd.aquasec.com/nvd/cve-2026-54267 |
+
+Evidence summary: Angular is a development platform for building mobile and desktop web applications using TypeScript/JavaScript and other languages. Prior to 22.0.1, 21.2.17, and 20.3.25, to optimize client-side bootstrap in Server-Side Rendered (SSR) environments, Angular supports Hydration via provideClientHydration(). During SSR, Angular serializes the application's runtime state (such as cached HttpClient responses) and outputs it into the HTML stream as a <script> tag with a predictable identifier. During c
+
+### 19. @angular/compiler: @angular/core: Angular: Cross-Site Scripting via internationalization event handlers
+
+| Field | Value |
+| --- | --- |
+| Finding ID | 17a8e474afa80bff |
+| Scanner | Trivy |
+| Severity | HIGH |
+| Evidence location | package-lock.json |
+| Rule | CVE-2026-69151 |
+| CWE | CWE-79 |
+| CVE / advisory | CVE-2026-69151 |
+| Reachability | Not assessed |
+| Impact | Requires review |
+| Disposition | Unverified |
+| Suggested fix | Review affected package and update to a compatible fixed version: 22.0.1, 21.2.19, 20.3.27 |
+| Source | trivy_output_offline.json |
+| Reference | https://avd.aquasec.com/nvd/cve-2026-69151 |
+
+Evidence summary: Angular is a development platform for building mobile and desktop web applications using TypeScript/JavaScript and other languages. Prior to 20.3.27, 21.2.19, and 22.0.1, the Angular compiler i18n pipeline permits i18n-onerror and other i18n-on event-handler attributes, allowing a lower-trust translation file to replace a static handler with executable JavaScript. This issue is fixed in versions 20.3.27, 21.2.19, and 22.0.1.
+
+### 20. @angular/router: @angular/router: Denial of Service via numeric matrix parameters during Server-Side Rendering
+
+| Field | Value |
+| --- | --- |
+| Finding ID | f3154c1aef9ab50e |
+| Scanner | Trivy |
+| Severity | HIGH |
+| Evidence location | package-lock.json |
+| Rule | CVE-2026-101896 |
+| CWE | CWE-400, CWE-770 |
+| CVE / advisory | CVE-2026-101896 |
+| Reachability | Not assessed |
+| Impact | Requires review |
+| Disposition | Unverified |
+| Suggested fix | Review affected package and update to a compatible fixed version: 22.2.0, 21.2.24, 20.3.32 |
+| Source | trivy_output_offline.json |
+| Reference | https://avd.aquasec.com/nvd/cve-2026-101896 |
+
+Evidence summary: Angular is a development platform for building mobile and desktop web applications using TypeScript/JavaScript and other languages. Prior to 20.3.32, 21.2.24, and 22.2.0, the @angular/router URL parser stores numeric matrix parameter names and numeric outlet names as properties on initially empty JavaScript objects during Node.js server-side rendering. V8 can interpret these URL-derived keys as array indices and allocate dense backing stores sized to high numeric values, so repeated small path s
+
+Only the first 20 of 102 findings are expanded here. Complete records are available in consolidated_findings.json.
 
 ## 7. Supply chain view
 
-Package scanners identified **98 distinct package/version entries** after consolidation.
+Package scanners identified **1165 distinct package/version entries** after consolidation.
 
 An SBOM package entry does not itself represent a vulnerability.
 
@@ -540,168 +538,134 @@ An SBOM package entry does not itself represent a vulnerability.
 
 | Package | Installed | Advisory | Severity | Fixed version | Source |
 | --- | --- | --- | --- | --- | --- |
-| django | 1.2 | CVE-2011-0698 | CRITICAL | 1.1.4, 1.2.5 | Trivy |
-| django | 1.2 | CVE-2012-3442 | CRITICAL | 1.3.2, 1.4.1 | Trivy |
-| django | 1.2 | CVE-2014-0472 | CRITICAL | 1.4.11, 1.5.6, 1.6.3 | Trivy |
-| django | 1.2 | CVE-2019-19844 | CRITICAL | 1.11.27, 2.2.9, 3.0.1 | Trivy |
-| django | 1.2 | CVE-2020-7471 | CRITICAL | 1.11.28, 2.2.10, 3.0.3 | Trivy |
-| django | 1.2 | CVE-2025-64459 | CRITICAL | 5.2.8, 5.1.14, 4.2.26 | Trivy |
-| Microsoft.Extensions.Caching.Memory | 6.0.1 | GHSA-qj66-m88j-hmgj | HIGH | Not supplied | .NET |
-| django | 1.2 | CVE-2010-4534 | HIGH | 1.1.3, 1.2.4 | Trivy |
-| django | 1.2 | CVE-2011-0696 | HIGH | 1.1.4, 1.2.5 | Trivy |
-| django | 1.2 | CVE-2011-4137 | HIGH | 1.2.7, 1.3.1 | Trivy |
-| django | 1.2 | CVE-2011-4138 | HIGH | 1.2.7, 1.3.1 | Trivy |
-| django | 1.2 | CVE-2011-4139 | HIGH | 1.2.7, 1.3.1 | Trivy |
-| django | 1.2 | CVE-2011-4140 | HIGH | Not supplied | Trivy |
-| django | 1.2 | CVE-2012-3443 | HIGH | 1.3.2, 1.4.1 | Trivy |
-| django | 1.2 | CVE-2012-3444 | HIGH | 1.3.2, 1.4.1 | Trivy |
-| django | 1.2 | CVE-2014-0473 | HIGH | 1.4.11, 1.5.6, 1.6.3 | Trivy |
-| django | 1.2 | CVE-2014-0474 | HIGH | 1.4.11, 1.5.6, 1.6.3 | Trivy |
-| django | 1.2 | CVE-2014-0480 | HIGH | 1.4.14, 1.5.9, 1.6.6 | Trivy |
-| django | 1.2 | CVE-2014-0481 | HIGH | 1.4.14, 1.5.9, 1.6.6 | Trivy |
-| django | 1.2 | CVE-2015-0221 | HIGH | 1.4.18, 1.6.10, 1.7.3 | Trivy |
-| django | 1.2 | CVE-2015-5143 | HIGH | 1.4.21, 1.7.9, 1.8.3 | Trivy |
-| django | 1.2 | CVE-2015-5144 | HIGH | 1.4.21, 1.7.9, 1.8.3 | Trivy |
-| django | 1.2 | CVE-2016-7401 | HIGH | 1.8.15, 1.9.10 | Trivy |
-| django | 1.2 | CVE-2022-36359 | HIGH | 3.2.15, 4.0.7 | Trivy |
-| django | 1.2 | CVE-2025-57833 | HIGH | 4.2.24, 5.1.12, 5.2.6 | Trivy |
-| django | 1.2 | CVE-2025-64458 | HIGH | 5.2.8, 5.1.14, 4.2.26 | Trivy |
-| django | 1.2 | CVE-2026-15307 | HIGH | 5.2.17, 6.0.8 | Trivy |
-| flask | 0.12 | CVE-2018-1000656 | HIGH | 0.12.3 | Trivy |
-| flask | 0.12 | CVE-2019-1010083 | HIGH | 1.0 | Trivy |
-| flask | 0.12 | CVE-2023-30861 | HIGH | 2.3.2, 2.2.5 | Trivy |
-| requests | 2.19.0 | CVE-2018-18074 | HIGH | 2.20.0 | Trivy |
-| django | 1.2 | CVE-2010-3082 | MEDIUM | 1.2.2 | Trivy |
-| django | 1.2 | CVE-2010-4535 | MEDIUM | 1.1.3, 1.2.4 | Trivy |
-| django | 1.2 | CVE-2011-0697 | MEDIUM | 1.1.4, 1.2.5 | Trivy |
-| django | 1.2 | CVE-2011-4136 | MEDIUM | 1.2.7, 1.3.1 | Trivy |
-| django | 1.2 | CVE-2014-0482 | MEDIUM | 1.4.14, 1.5.9, 1.6.6, 1.7c3 | Trivy |
-| django | 1.2 | CVE-2014-0483 | MEDIUM | 1.4.14, 1.5.9, 1.6.6, 1.7c3 | Trivy |
-| django | 1.2 | CVE-2015-0219 | MEDIUM | 1.4.18, 1.6.10, 1.7.3 | Trivy |
-| django | 1.2 | CVE-2015-0220 | MEDIUM | 1.4.18, 1.6.10, 1.7.3 | Trivy |
-| django | 1.2 | CVE-2015-2241 | MEDIUM | 1.7.6, 1.8b2 | Trivy |
-| django | 1.2 | CVE-2015-2317 | MEDIUM | 1.4.20, 1.6.11, 1.7.7, 1.8c1 | Trivy |
-| django | 1.2 | CVE-2016-2512 | MEDIUM | 1.8.10, 1.9.3 | Trivy |
-| django | 1.2 | CVE-2016-6186 | MEDIUM | 1.8.14, 1.9.8, 1.10rc1 | Trivy |
-| django | 1.2 | CVE-2021-33203 | MEDIUM | 2.2.24, 3.1.12, 3.2.4 | Trivy |
-| django | 1.2 | CVE-2024-45231 | MEDIUM | 5.1.1, 5.0.9, 4.2.16 | Trivy |
-| django | 1.2 | CVE-2025-48432 | MEDIUM | 5.2.2, 5.1.10, 4.2.22 | Trivy |
-| django | 1.2 | CVE-2026-15830 | MEDIUM | 5.2.17, 6.0.8, 6.1.1 | Trivy |
-| django | 1.2 | CVE-2026-53877 | MEDIUM | 5.2.16, 6.0.7 | Trivy |
-| django | 1.2 | CVE-2026-53878 | MEDIUM | 5.2.16, 6.0.7 | Trivy |
-| requests | 2.19.0 | CVE-2023-32681 | MEDIUM | 2.31.0 | Trivy |
-| requests | 2.19.0 | CVE-2024-35195 | MEDIUM | 2.32.0 | Trivy |
-| requests | 2.19.0 | CVE-2024-47081 | MEDIUM | 2.32.4 | Trivy |
-| requests | 2.19.0 | CVE-2026-25645 | MEDIUM | 2.33.0 | Trivy |
-| django | 1.2 | CVE-2016-2513 | LOW | 1.8.10, 1.9.3 | Trivy |
-| django | 1.2 | CVE-2026-48587 | LOW | 5.2.15, 6.0.6 | Trivy |
-| django | 1.2 | CVE-2026-48588 | LOW | 5.2.16, 6.0.7 | Trivy |
-| django | 1.2 | CVE-2026-6873 | LOW | 5.2.15, 6.0.6 | Trivy |
-| django | 1.2 | CVE-2026-8404 | LOW | 5.2.15, 6.0.6 | Trivy |
-| flask | 0.12 | CVE-2026-27205 | LOW | 3.1.3 | Trivy |
+| @angular/common | 19.2.18 | CVE-2026-50170 | HIGH | 22.0.0-rc.2, 20.3.22, 19.2.23, 21.2.15 | Trivy |
+| @angular/common | 19.2.18 | CVE-2026-50171 | HIGH | 22.0.0-rc.2, 20.3.22, 19.2.23, 21.2.15 | Trivy |
+| @angular/common | 19.2.18 | CVE-2026-54266 | HIGH | 22.0.1, 21.2.17, 20.3.25 | Trivy |
+| @angular/common | 19.2.18 | CVE-2026-54268 | HIGH | 22.0.1, 21.2.17, 20.3.25 | Trivy |
+| @angular/common | 19.2.18 | CVE-2026-68945 | HIGH | 22.0.2, 21.2.19, 20.3.27 | Trivy |
+| @angular/compiler | 19.2.18 | CVE-2026-32635 | HIGH | 22.0.0-next.3, 21.2.4, 20.3.18, 19.2.20 | Trivy |
+| @angular/compiler | 19.2.18 | CVE-2026-69151 | HIGH | 22.0.1, 21.2.19, 20.3.27 | Trivy |
+| @angular/core | 19.2.18 | CVE-2026-27970 | HIGH | 21.2.0, 21.1.6, 20.3.17, 19.2.19 | Trivy |
+| @angular/core | 19.2.18 | CVE-2026-32635 | HIGH | 22.0.0-next.3, 21.2.4, 20.3.18, 19.2.20 | Trivy |
+| @angular/core | 19.2.18 | CVE-2026-54267 | HIGH | 22.0.1, 21.2.17, 20.3.25 | Trivy |
+| @angular/core | 19.2.18 | CVE-2026-69151 | HIGH | 22.0.1, 21.2.19, 20.3.27 | Trivy |
+| @angular/router | 19.2.18 | CVE-2026-101896 | HIGH | 22.2.0, 21.2.24, 20.3.32 | Trivy |
+| @angular/router | 19.2.18 | CVE-2026-111752 | HIGH | 22.2.1, 21.2.25, 20.3.33 | Trivy |
+| @angular/common | 19.2.18 | CVE-2026-111753 | MEDIUM | 21.0.3, 20.3.34 | Trivy |
+| @angular/common | 19.2.18 | CVE-2026-88059 | MEDIUM | 22.1.1, 21.2.20, 20.3.28 | Trivy |
+| @angular/compiler | 19.2.18 | CVE-2026-50557 | MEDIUM | 21.2.15, 22.0.0-rc.2, 20.3.22, 19.2.22 | Trivy |
+| @angular/compiler | 19.2.18 | CVE-2026-54265 | MEDIUM | 22.0.1, 21.2.17, 20.3.25 | Trivy |
+| @angular/compiler | 19.2.18 | CVE-2026-88057 | MEDIUM | 22.1.0, 21.2.20, 20.3.28 | Trivy |
+| @angular/core | 19.2.18 | CVE-2026-50557 | MEDIUM | 21.2.15, 22.0.0-rc.2, 20.3.22, 19.2.22 | Trivy |
+| @angular/core | 19.2.18 | CVE-2026-52725 | MEDIUM | 21.2.15, 22.0.0-rc.2, 19.2.23, 20.3.22 | Trivy |
+| @angular/core | 19.2.18 | CVE-2026-88057 | MEDIUM | 22.1.0, 21.2.20, 20.3.28 | Trivy |
 
 ### Package inventory
 
 | Package | Version / constraint | Direct / transitive | License | Source |
 | --- | --- | --- | --- | --- |
-| actions/checkout | v7 | Unknown | Not identified | Syft CycloneDX, Syft SPDX |
-| actions/setup-node | v7 | Unknown | Not identified | Syft CycloneDX, Syft SPDX |
-| beemojs/conventional-pr-action | v3 | Unknown | Not identified | Syft CycloneDX, Syft SPDX |
-| C:\Users\dhrut\OneDrive\Desktop\abb_hackathon\sgc-gatekeeper-testbed |  | Unknown | Not identified | Syft SPDX |
-| django | 1.2 | Unknown | Not assessed | Trivy, Syft CycloneDX, Syft SPDX |
-| flask | 0.12 | Unknown | Not assessed | Trivy, Syft CycloneDX, Syft SPDX |
-| googleapis/release-please-action | v4 | Unknown | Not identified | Syft CycloneDX, Syft SPDX |
-| pkg:npm/%40cacheable/memory@2.2.0 | 2.2.0 | Transitive | Not assessed | ScanCode dependency |
-| pkg:npm/%40cacheable/utils@2.5.0 | 2.5.0 | Transitive | Not assessed | ScanCode dependency |
-| pkg:npm/%40eslint-community/eslint-utils@4.10.1 | 4.10.1 | Transitive | Not assessed | ScanCode dependency |
-| pkg:npm/%40eslint-community/regexpp@4.12.3 | 4.12.3 | Transitive | Not assessed | ScanCode dependency |
-| pkg:npm/%40eslint/config-array@0.23.6 | 0.23.6 | Transitive | Not assessed | ScanCode dependency |
-| pkg:npm/%40eslint/config-helpers@0.7.0 | 0.7.0 | Transitive | Not assessed | ScanCode dependency |
-| pkg:npm/%40eslint/core@1.2.1 | 1.2.1 | Transitive | Not assessed | ScanCode dependency |
-| pkg:npm/%40eslint/js | ^10.0.1 | Direct | Not assessed | ScanCode dependency |
-| pkg:npm/%40eslint/js@10.0.1 | 10.0.1 | Transitive | Not assessed | ScanCode dependency |
-| pkg:npm/%40eslint/object-schema@3.0.5 | 3.0.5 | Transitive | Not assessed | ScanCode dependency |
-| pkg:npm/%40eslint/plugin-kit@0.7.3 | 0.7.3 | Transitive | Not assessed | ScanCode dependency |
-| pkg:npm/%40humanfs/core@0.19.2 | 0.19.2 | Transitive | Not assessed | ScanCode dependency |
-| pkg:npm/%40humanfs/node@0.16.8 | 0.16.8 | Transitive | Not assessed | ScanCode dependency |
-| pkg:npm/%40humanfs/types@0.15.0 | 0.15.0 | Transitive | Not assessed | ScanCode dependency |
-| pkg:npm/%40humanwhocodes/module-importer@1.0.1 | 1.0.1 | Transitive | Not assessed | ScanCode dependency |
-| pkg:npm/%40humanwhocodes/retry@0.4.3 | 0.4.3 | Transitive | Not assessed | ScanCode dependency |
-| pkg:npm/%40isaacs/nonrecursive-glob-match@1.1.0 | 1.1.0 | Transitive | Not assessed | ScanCode dependency |
-| pkg:npm/%40keyv/bigmap@1.3.1 | 1.3.1 | Transitive | Not assessed | ScanCode dependency |
-| pkg:npm/%40keyv/serialize@1.1.1 | 1.1.1 | Transitive | Not assessed | ScanCode dependency |
-| pkg:npm/%40types/esrecurse@4.3.1 | 4.3.1 | Transitive | Not assessed | ScanCode dependency |
-| pkg:npm/%40types/estree@1.0.10 | 1.0.10 | Transitive | Not assessed | ScanCode dependency |
-| pkg:npm/%40types/json-schema@7.0.15 | 7.0.15 | Transitive | Not assessed | ScanCode dependency |
-| pkg:npm/acorn-jsx@5.3.2 | 5.3.2 | Transitive | Not assessed | ScanCode dependency |
-| pkg:npm/acorn@8.19.0 | 8.19.0 | Transitive | Not assessed | ScanCode dependency |
-| pkg:npm/ajv@6.15.0 | 6.15.0 | Transitive | Not assessed | ScanCode dependency |
-| pkg:npm/balanced-match@4.0.4 | 4.0.4 | Transitive | Not assessed | ScanCode dependency |
-| pkg:npm/brace-expansion@5.0.13 | 5.0.13 | Transitive | Not assessed | ScanCode dependency |
-| pkg:npm/cacheable@2.5.0 | 2.5.0 | Transitive | Not assessed | ScanCode dependency |
-| pkg:npm/cross-spawn@7.0.6 | 7.0.6 | Transitive | Not assessed | ScanCode dependency |
-| pkg:npm/debug@4.4.3 | 4.4.3 | Transitive | Not assessed | ScanCode dependency |
-| pkg:npm/deep-is@0.1.4 | 0.1.4 | Transitive | Not assessed | ScanCode dependency |
-| pkg:npm/escape-string-regexp@4.0.0 | 4.0.0 | Transitive | Not assessed | ScanCode dependency |
-| pkg:npm/eslint | ^10.15.0 | Direct | Not assessed | ScanCode dependency |
-| pkg:npm/eslint-plugin-no-unsanitized | ^4.1.5 | Direct | Not assessed | ScanCode dependency |
-| pkg:npm/eslint-plugin-no-unsanitized@4.1.5 | 4.1.5 | Transitive | Not assessed | ScanCode dependency |
-| pkg:npm/eslint-plugin-security | ^4.2.1 | Direct | Not assessed | ScanCode dependency |
-| pkg:npm/eslint-plugin-security@4.2.1 | 4.2.1 | Transitive | Not assessed | ScanCode dependency |
-| pkg:npm/eslint-scope@9.1.2 | 9.1.2 | Transitive | Not assessed | ScanCode dependency |
-| pkg:npm/eslint-visitor-keys@3.4.3 | 3.4.3 | Transitive | Not assessed | ScanCode dependency |
-| pkg:npm/eslint-visitor-keys@5.0.1 | 5.0.1 | Transitive | Not assessed | ScanCode dependency |
-| pkg:npm/eslint@10.15.0 | 10.15.0 | Transitive | Not assessed | ScanCode dependency |
-| pkg:npm/espree@11.2.0 | 11.2.0 | Transitive | Not assessed | ScanCode dependency |
-| pkg:npm/esquery@1.7.0 | 1.7.0 | Transitive | Not assessed | ScanCode dependency |
-| pkg:npm/esrecurse@4.3.0 | 4.3.0 | Transitive | Not assessed | ScanCode dependency |
-| pkg:npm/estraverse@5.3.0 | 5.3.0 | Transitive | Not assessed | ScanCode dependency |
-| pkg:npm/esutils@2.0.3 | 2.0.3 | Transitive | Not assessed | ScanCode dependency |
-| pkg:npm/fast-deep-equal@3.1.3 | 3.1.3 | Transitive | Not assessed | ScanCode dependency |
-| pkg:npm/fast-json-stable-stringify@2.1.0 | 2.1.0 | Transitive | Not assessed | ScanCode dependency |
-| pkg:npm/fast-levenshtein@2.0.6 | 2.0.6 | Transitive | Not assessed | ScanCode dependency |
-| pkg:npm/file-entry-cache@11.1.5 | 11.1.5 | Transitive | Not assessed | ScanCode dependency |
-| pkg:npm/find-up@5.0.0 | 5.0.0 | Transitive | Not assessed | ScanCode dependency |
-| pkg:npm/flat-cache@6.1.23 | 6.1.23 | Transitive | Not assessed | ScanCode dependency |
-| pkg:npm/flatted@3.4.4 | 3.4.4 | Transitive | Not assessed | ScanCode dependency |
-| pkg:npm/glob-parent@6.0.2 | 6.0.2 | Transitive | Not assessed | ScanCode dependency |
-| pkg:npm/globals | ^17.14.0 | Direct | Not assessed | ScanCode dependency |
-| pkg:npm/globals@17.14.0 | 17.14.0 | Transitive | Not assessed | ScanCode dependency |
-| pkg:npm/hashery@1.5.1 | 1.5.1 | Transitive | Not assessed | ScanCode dependency |
-| pkg:npm/hookified@1.15.1 | 1.15.1 | Transitive | Not assessed | ScanCode dependency |
-| pkg:npm/hookified@2.2.0 | 2.2.0 | Transitive | Not assessed | ScanCode dependency |
-| pkg:npm/ignore@5.3.2 | 5.3.2 | Transitive | Not assessed | ScanCode dependency |
-| pkg:npm/imurmurhash@0.1.4 | 0.1.4 | Transitive | Not assessed | ScanCode dependency |
-| pkg:npm/is-extglob@2.1.1 | 2.1.1 | Transitive | Not assessed | ScanCode dependency |
-| pkg:npm/is-glob@4.0.3 | 4.0.3 | Transitive | Not assessed | ScanCode dependency |
-| pkg:npm/isexe@2.0.0 | 2.0.0 | Transitive | Not assessed | ScanCode dependency |
-| pkg:npm/json-schema-traverse@0.4.1 | 0.4.1 | Transitive | Not assessed | ScanCode dependency |
-| pkg:npm/json-stable-stringify-without-jsonify@1.0.1 | 1.0.1 | Transitive | Not assessed | ScanCode dependency |
-| pkg:npm/keyv@5.6.0 | 5.6.0 | Transitive | Not assessed | ScanCode dependency |
-| pkg:npm/levn@0.4.1 | 0.4.1 | Transitive | Not assessed | ScanCode dependency |
-| pkg:npm/locate-path@6.0.0 | 6.0.0 | Transitive | Not assessed | ScanCode dependency |
-| pkg:npm/minimatch@11.0.8 | 11.0.8 | Transitive | Not assessed | ScanCode dependency |
-| pkg:npm/ms@2.1.3 | 2.1.3 | Transitive | Not assessed | ScanCode dependency |
-| pkg:npm/natural-compare@1.4.0 | 1.4.0 | Transitive | Not assessed | ScanCode dependency |
-| pkg:npm/optionator@0.9.4 | 0.9.4 | Transitive | Not assessed | ScanCode dependency |
-| pkg:npm/p-limit@3.1.0 | 3.1.0 | Transitive | Not assessed | ScanCode dependency |
-| pkg:npm/p-locate@5.0.0 | 5.0.0 | Transitive | Not assessed | ScanCode dependency |
-| pkg:npm/path-exists@4.0.0 | 4.0.0 | Transitive | Not assessed | ScanCode dependency |
-| pkg:npm/path-key@3.1.1 | 3.1.1 | Transitive | Not assessed | ScanCode dependency |
-| pkg:npm/prelude-ls@1.2.1 | 1.2.1 | Transitive | Not assessed | ScanCode dependency |
-| pkg:npm/punycode@2.3.1 | 2.3.1 | Transitive | Not assessed | ScanCode dependency |
-| pkg:npm/qified@0.10.1 | 0.10.1 | Transitive | Not assessed | ScanCode dependency |
-| pkg:npm/regexp-tree@0.1.27 | 0.1.27 | Transitive | Not assessed | ScanCode dependency |
-| pkg:npm/safe-regex@2.1.1 | 2.1.1 | Transitive | Not assessed | ScanCode dependency |
-| pkg:npm/shebang-command@2.0.0 | 2.0.0 | Transitive | Not assessed | ScanCode dependency |
-| pkg:npm/shebang-regex@3.0.0 | 3.0.0 | Transitive | Not assessed | ScanCode dependency |
-| pkg:npm/type-check@0.4.0 | 0.4.0 | Transitive | Not assessed | ScanCode dependency |
-| pkg:npm/uri-js@4.4.1 | 4.4.1 | Transitive | Not assessed | ScanCode dependency |
-| pkg:npm/which@2.0.2 | 2.0.2 | Transitive | Not assessed | ScanCode dependency |
-| pkg:npm/word-wrap@1.2.5 | 1.2.5 | Transitive | Not assessed | ScanCode dependency |
-| pkg:npm/yocto-queue@0.1.0 | 0.1.0 | Transitive | Not assessed | ScanCode dependency |
-| requests | 2.19.0 | Unknown | Not assessed | Trivy, Syft CycloneDX, Syft SPDX |
-| sgc-gatekeeper-testbed | 1.0.0 | Unknown | ISC | ScanCode, Syft CycloneDX, Syft SPDX |
+| /home/kali/workspace/abb-hackathon/copilot-engineering-secure-software-lab-angular |  | Unknown | Not identified | Syft SPDX |
+| @angular/common | 19.2.18 | Transitive | MIT | Trivy, ScanCode dependency, Syft CycloneDX, Syft SPDX |
+| @angular/compiler | 19.2.18 | Transitive | MIT | Trivy, ScanCode dependency, Syft CycloneDX, Syft SPDX |
+| @angular/core | 19.2.18 | Transitive | MIT | Trivy, ScanCode dependency, Syft CycloneDX, Syft SPDX |
+| @angular/forms | 19.2.18 | Transitive | MIT | Trivy, ScanCode dependency, Syft CycloneDX, Syft SPDX |
+| @angular/platform-browser | 19.2.18 | Transitive | MIT | Trivy, ScanCode dependency, Syft CycloneDX, Syft SPDX |
+| @angular/platform-browser-dynamic | 19.2.18 | Transitive | MIT | Trivy, ScanCode dependency, Syft CycloneDX, Syft SPDX |
+| @angular/router | 19.2.18 | Transitive | MIT | Trivy, ScanCode dependency, Syft CycloneDX, Syft SPDX |
+| copilot-secure-angular-lab | 1.0.0 | Unknown | ISC | ScanCode, Syft CycloneDX, Syft SPDX |
+| pkg:npm/%40ampproject/remapping@2.3.0 | 2.3.0 | Transitive | Not assessed | ScanCode dependency |
+| pkg:npm/%40angular-devkit/architect@0.1902.19 | 0.1902.19 | Transitive | Not assessed | ScanCode dependency |
+| pkg:npm/%40angular-devkit/build-angular | ^19.2.19 | Direct | Not assessed | ScanCode dependency |
+| pkg:npm/%40angular-devkit/build-angular@19.2.19 | 19.2.19 | Transitive | Not assessed | ScanCode dependency |
+| pkg:npm/%40angular-devkit/build-webpack@0.1902.19 | 0.1902.19 | Transitive | Not assessed | ScanCode dependency |
+| pkg:npm/%40angular-devkit/core@19.2.19 | 19.2.19 | Transitive | Not assessed | ScanCode dependency |
+| pkg:npm/%40angular-devkit/schematics@19.2.19 | 19.2.19 | Transitive | Not assessed | ScanCode dependency |
+| pkg:npm/%40angular/build@19.2.19 | 19.2.19 | Transitive | Not assessed | ScanCode dependency |
+| pkg:npm/%40angular/cli | ^19.2.19 | Direct | Not assessed | ScanCode dependency |
+| pkg:npm/%40angular/cli@19.2.19 | 19.2.19 | Transitive | Not assessed | ScanCode dependency |
+| pkg:npm/%40angular/common | ^19.2.0 | Direct | Not assessed | ScanCode dependency |
+| pkg:npm/%40angular/compiler | ^19.2.0 | Direct | Not assessed | ScanCode dependency |
+| pkg:npm/%40angular/compiler-cli | ^19.2.0 | Direct | Not assessed | ScanCode dependency |
+| pkg:npm/%40angular/compiler-cli@19.2.18 | 19.2.18 | Transitive | Not assessed | ScanCode dependency |
+| pkg:npm/%40angular/core | ^19.2.0 | Direct | Not assessed | ScanCode dependency |
+| pkg:npm/%40angular/forms | ^19.2.0 | Direct | Not assessed | ScanCode dependency |
+| pkg:npm/%40angular/platform-browser | ^19.2.0 | Direct | Not assessed | ScanCode dependency |
+| pkg:npm/%40angular/platform-browser-dynamic | ^19.2.0 | Direct | Not assessed | ScanCode dependency |
+| pkg:npm/%40angular/router | ^19.2.0 | Direct | Not assessed | ScanCode dependency |
+| pkg:npm/%40babel/code-frame@7.27.1 | 7.27.1 | Transitive | Not assessed | ScanCode dependency |
+| pkg:npm/%40babel/compat-data@7.28.5 | 7.28.5 | Transitive | Not assessed | ScanCode dependency |
+| pkg:npm/%40babel/core@7.26.10 | 7.26.10 | Transitive | Not assessed | ScanCode dependency |
+| pkg:npm/%40babel/core@7.26.9 | 7.26.9 | Transitive | Not assessed | ScanCode dependency |
+| pkg:npm/%40babel/core@7.28.5 | 7.28.5 | Transitive | Not assessed | ScanCode dependency |
+| pkg:npm/%40babel/generator@7.26.10 | 7.26.10 | Transitive | Not assessed | ScanCode dependency |
+| pkg:npm/%40babel/generator@7.28.5 | 7.28.5 | Transitive | Not assessed | ScanCode dependency |
+| pkg:npm/%40babel/helper-annotate-as-pure@7.25.9 | 7.25.9 | Transitive | Not assessed | ScanCode dependency |
+| pkg:npm/%40babel/helper-annotate-as-pure@7.27.3 | 7.27.3 | Transitive | Not assessed | ScanCode dependency |
+| pkg:npm/%40babel/helper-compilation-targets@7.27.2 | 7.27.2 | Transitive | Not assessed | ScanCode dependency |
+| pkg:npm/%40babel/helper-create-class-features-plugin@7.28.5 | 7.28.5 | Transitive | Not assessed | ScanCode dependency |
+| pkg:npm/%40babel/helper-create-regexp-features-plugin@7.28.5 | 7.28.5 | Transitive | Not assessed | ScanCode dependency |
+| pkg:npm/%40babel/helper-define-polyfill-provider@0.6.5 | 0.6.5 | Transitive | Not assessed | ScanCode dependency |
+| pkg:npm/%40babel/helper-globals@7.28.0 | 7.28.0 | Transitive | Not assessed | ScanCode dependency |
+| pkg:npm/%40babel/helper-member-expression-to-functions@7.28.5 | 7.28.5 | Transitive | Not assessed | ScanCode dependency |
+| pkg:npm/%40babel/helper-module-imports@7.27.1 | 7.27.1 | Transitive | Not assessed | ScanCode dependency |
+| pkg:npm/%40babel/helper-module-transforms@7.28.3 | 7.28.3 | Transitive | Not assessed | ScanCode dependency |
+| pkg:npm/%40babel/helper-optimise-call-expression@7.27.1 | 7.27.1 | Transitive | Not assessed | ScanCode dependency |
+| pkg:npm/%40babel/helper-plugin-utils@7.27.1 | 7.27.1 | Transitive | Not assessed | ScanCode dependency |
+| pkg:npm/%40babel/helper-remap-async-to-generator@7.27.1 | 7.27.1 | Transitive | Not assessed | ScanCode dependency |
+| pkg:npm/%40babel/helper-replace-supers@7.27.1 | 7.27.1 | Transitive | Not assessed | ScanCode dependency |
+| pkg:npm/%40babel/helper-skip-transparent-expression-wrappers@7.27.1 | 7.27.1 | Transitive | Not assessed | ScanCode dependency |
+| pkg:npm/%40babel/helper-split-export-declaration@7.24.7 | 7.24.7 | Transitive | Not assessed | ScanCode dependency |
+| pkg:npm/%40babel/helper-string-parser@7.27.1 | 7.27.1 | Transitive | Not assessed | ScanCode dependency |
+| pkg:npm/%40babel/helper-validator-identifier@7.28.5 | 7.28.5 | Transitive | Not assessed | ScanCode dependency |
+| pkg:npm/%40babel/helper-validator-option@7.27.1 | 7.27.1 | Transitive | Not assessed | ScanCode dependency |
+| pkg:npm/%40babel/helper-wrap-function@7.28.3 | 7.28.3 | Transitive | Not assessed | ScanCode dependency |
+| pkg:npm/%40babel/helpers@7.28.4 | 7.28.4 | Transitive | Not assessed | ScanCode dependency |
+| pkg:npm/%40babel/parser@7.28.5 | 7.28.5 | Transitive | Not assessed | ScanCode dependency |
+| pkg:npm/%40babel/plugin-bugfix-firefox-class-in-computed-class-key@7.28.5 | 7.28.5 | Transitive | Not assessed | ScanCode dependency |
+| pkg:npm/%40babel/plugin-bugfix-safari-class-field-initializer-scope@7.27.1 | 7.27.1 | Transitive | Not assessed | ScanCode dependency |
+| pkg:npm/%40babel/plugin-bugfix-safari-id-destructuring-collision-in-function-expression@7.27.1 | 7.27.1 | Transitive | Not assessed | ScanCode dependency |
+| pkg:npm/%40babel/plugin-bugfix-v8-spread-parameters-in-optional-chaining@7.27.1 | 7.27.1 | Transitive | Not assessed | ScanCode dependency |
+| pkg:npm/%40babel/plugin-bugfix-v8-static-class-fields-redefine-readonly@7.28.3 | 7.28.3 | Transitive | Not assessed | ScanCode dependency |
+| pkg:npm/%40babel/plugin-proposal-private-property-in-object@7.21.0-placeholder-for-preset-env.2 | 7.21.0-placeholder-for-preset-env.2 | Transitive | Not assessed | ScanCode dependency |
+| pkg:npm/%40babel/plugin-syntax-async-generators@7.8.4 | 7.8.4 | Transitive | Not assessed | ScanCode dependency |
+| pkg:npm/%40babel/plugin-syntax-bigint@7.8.3 | 7.8.3 | Transitive | Not assessed | ScanCode dependency |
+| pkg:npm/%40babel/plugin-syntax-class-properties@7.12.13 | 7.12.13 | Transitive | Not assessed | ScanCode dependency |
+| pkg:npm/%40babel/plugin-syntax-class-static-block@7.14.5 | 7.14.5 | Transitive | Not assessed | ScanCode dependency |
+| pkg:npm/%40babel/plugin-syntax-import-assertions@7.27.1 | 7.27.1 | Transitive | Not assessed | ScanCode dependency |
+| pkg:npm/%40babel/plugin-syntax-import-attributes@7.26.0 | 7.26.0 | Transitive | Not assessed | ScanCode dependency |
+| pkg:npm/%40babel/plugin-syntax-import-attributes@7.27.1 | 7.27.1 | Transitive | Not assessed | ScanCode dependency |
+| pkg:npm/%40babel/plugin-syntax-import-meta@7.10.4 | 7.10.4 | Transitive | Not assessed | ScanCode dependency |
+| pkg:npm/%40babel/plugin-syntax-json-strings@7.8.3 | 7.8.3 | Transitive | Not assessed | ScanCode dependency |
+| pkg:npm/%40babel/plugin-syntax-jsx@7.27.1 | 7.27.1 | Transitive | Not assessed | ScanCode dependency |
+| pkg:npm/%40babel/plugin-syntax-logical-assignment-operators@7.10.4 | 7.10.4 | Transitive | Not assessed | ScanCode dependency |
+| pkg:npm/%40babel/plugin-syntax-nullish-coalescing-operator@7.8.3 | 7.8.3 | Transitive | Not assessed | ScanCode dependency |
+| pkg:npm/%40babel/plugin-syntax-numeric-separator@7.10.4 | 7.10.4 | Transitive | Not assessed | ScanCode dependency |
+| pkg:npm/%40babel/plugin-syntax-object-rest-spread@7.8.3 | 7.8.3 | Transitive | Not assessed | ScanCode dependency |
+| pkg:npm/%40babel/plugin-syntax-optional-catch-binding@7.8.3 | 7.8.3 | Transitive | Not assessed | ScanCode dependency |
+| pkg:npm/%40babel/plugin-syntax-optional-chaining@7.8.3 | 7.8.3 | Transitive | Not assessed | ScanCode dependency |
+| pkg:npm/%40babel/plugin-syntax-private-property-in-object@7.14.5 | 7.14.5 | Transitive | Not assessed | ScanCode dependency |
+| pkg:npm/%40babel/plugin-syntax-top-level-await@7.14.5 | 7.14.5 | Transitive | Not assessed | ScanCode dependency |
+| pkg:npm/%40babel/plugin-syntax-typescript@7.27.1 | 7.27.1 | Transitive | Not assessed | ScanCode dependency |
+| pkg:npm/%40babel/plugin-syntax-unicode-sets-regex@7.18.6 | 7.18.6 | Transitive | Not assessed | ScanCode dependency |
+| pkg:npm/%40babel/plugin-transform-arrow-functions@7.27.1 | 7.27.1 | Transitive | Not assessed | ScanCode dependency |
+| pkg:npm/%40babel/plugin-transform-async-generator-functions@7.26.8 | 7.26.8 | Transitive | Not assessed | ScanCode dependency |
+| pkg:npm/%40babel/plugin-transform-async-to-generator@7.25.9 | 7.25.9 | Transitive | Not assessed | ScanCode dependency |
+| pkg:npm/%40babel/plugin-transform-block-scoped-functions@7.27.1 | 7.27.1 | Transitive | Not assessed | ScanCode dependency |
+| pkg:npm/%40babel/plugin-transform-block-scoping@7.28.5 | 7.28.5 | Transitive | Not assessed | ScanCode dependency |
+| pkg:npm/%40babel/plugin-transform-class-properties@7.27.1 | 7.27.1 | Transitive | Not assessed | ScanCode dependency |
+| pkg:npm/%40babel/plugin-transform-class-static-block@7.28.3 | 7.28.3 | Transitive | Not assessed | ScanCode dependency |
+| pkg:npm/%40babel/plugin-transform-classes@7.28.4 | 7.28.4 | Transitive | Not assessed | ScanCode dependency |
+| pkg:npm/%40babel/plugin-transform-computed-properties@7.27.1 | 7.27.1 | Transitive | Not assessed | ScanCode dependency |
+| pkg:npm/%40babel/plugin-transform-destructuring@7.28.5 | 7.28.5 | Transitive | Not assessed | ScanCode dependency |
+| pkg:npm/%40babel/plugin-transform-dotall-regex@7.27.1 | 7.27.1 | Transitive | Not assessed | ScanCode dependency |
+| pkg:npm/%40babel/plugin-transform-duplicate-keys@7.27.1 | 7.27.1 | Transitive | Not assessed | ScanCode dependency |
+| pkg:npm/%40babel/plugin-transform-duplicate-named-capturing-groups-regex@7.27.1 | 7.27.1 | Transitive | Not assessed | ScanCode dependency |
+| pkg:npm/%40babel/plugin-transform-dynamic-import@7.27.1 | 7.27.1 | Transitive | Not assessed | ScanCode dependency |
+| pkg:npm/%40babel/plugin-transform-exponentiation-operator@7.28.5 | 7.28.5 | Transitive | Not assessed | ScanCode dependency |
+| pkg:npm/%40babel/plugin-transform-export-namespace-from@7.27.1 | 7.27.1 | Transitive | Not assessed | ScanCode dependency |
+| pkg:npm/%40babel/plugin-transform-for-of@7.27.1 | 7.27.1 | Transitive | Not assessed | ScanCode dependency |
+
+Additional package entries are available in consolidated_findings.json.
 
 ### Repository license
 

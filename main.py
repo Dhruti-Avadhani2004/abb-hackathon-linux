@@ -5,6 +5,7 @@ print("\nStatic Analysis completed!")
 
 # 2. Dependency, Configuration and License Scanning
 from scanners import trivy_scanner
+trivy_scanner.main()
 print("\nDependencies, configuration and licenses scan completed!")
 
 # 3. Software Bill of Materials Generation

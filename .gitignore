@@ -1,30 +1,39 @@
-# Python virtual environment
+# Python virtual environments
 venv/
 .venv/
-
-# Python cache
 __pycache__/
-*.py[cod]
-.pytest_cache/
+*.pyc
 
-# Excluded archive
-scanner_output.zip
+# Node.js dependencies
+node_modules/
 
-# Git internal and OS files
+# Local vulnerability databases and caches
+trivy-cache/
+.trivy/
+.cache/
+*.db
+
+# Downloaded scanner tool bundles
+tools/scancode/
+tools/dotnet/
+tools/node/
+
+# Generated scanner results
+scanner_output/
+security_report/
+
+# Local environment variables and credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+credentials.json
+secrets.txt
+
+# IDE and operating system
+.vscode/
+.idea/
 .DS_Store
-Thumbs.db
-
-# Exclude oversized files
-/tools/scancode/scancode-toolkit-v32.5.0/scancode_toolkit-32.5.0-cp312-none-any.whl
-/trivy-cache/db/trivy.db
-
-# Local testbeds
-/sgc-gatekeeper-testbed/
-/dotnet-testbed/
-
-# Scanner reports containing detected credentials
-/scanner_output/gitleaks_output.json
-/scanner_output/semgrep_output.txt
-/scanner_output/semgrep-configs/generic/secrets/security/detected-slack-webhook.yaml
-# Vulnerable application test repositories
-dotnet-aspgoat/
